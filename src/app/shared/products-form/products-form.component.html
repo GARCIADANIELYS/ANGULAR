@@ -1,0 +1,33 @@
+<div class="father-div">
+  <div class="title-div">
+    <h1>LET'S CREATE YOUR OWN PRODUCTS!</h1>
+  </div>
+
+  <div class="form-div">
+    <form (submit)="createNewProduct($event)">
+      <label for="image-url">Image Url: </label>
+      <input id="image-url" name="imageUrl" type="text" placeholder="http://" [(ngModel)]="imageUrl">
+      <br>
+      <label for="name">Name: </label>
+      <input id="name" name="name" type="text" placeholder="Grips" [(ngModel)]="name" required>
+      <br>
+      <label for="price">Price €: </label>
+      <input id="price" name="price" type="number" placeholder="12" [(ngModel)]="price">
+      <br>
+      <label for="reference">Reference: </label>
+      <input id="reference" name="reference" type="number" placeholder="65343" [(ngModel)]="reference">
+      <br>
+      <label for="material">Material: </label>
+      <input id="material" name="material" type="text" placeholder="cotton" [(ngModel)]="material"> <br>
+      <button class="button" type="submit">CREATE NEW PRODUCT</button>
+    </form>
+  </div>
+
+  <div class="new-prod-div" *ngFor="let product of products">
+    <h2>{{ product.name }}</h2>
+    <img [src]="product.image" alt="Product Image">
+    <p>Price: {{ product.price }} €</p>
+    <p>Material: {{ product.material }}</p>
+    <p>Reference: {{ product.reference }}</p>
+  </div>
+</div>

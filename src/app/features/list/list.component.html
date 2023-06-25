@@ -1,0 +1,18 @@
+<div class="product-search-div">
+    <input type="text" [(ngModel)]="searchProduct" (input)="onSearchChange()" placeholder="search products">
+</div>
+
+<div class="father_div">
+    <div class="prod_div" *ngFor="let product of filteredProducts">
+        <img [src]="product.image">
+        <h3>{{product.name}}</h3>
+        <br>
+        <button (click)="showDetails(product.id.toString())">product detail</button>
+        <div *ngIf="showProductDetails && product.id.toString() === selectedProductId">
+            <h4>Product ID: {{product.id}}</h4>
+            <p>Price: {{product.price}}€</p>
+            <p class="p_reference">Reference product: {{product.reference}}</p>
+            <p>Materials: {{product.material}}</p>
+        </div>
+    </div>
+</div>

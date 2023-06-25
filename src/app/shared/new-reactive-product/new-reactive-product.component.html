@@ -1,0 +1,55 @@
+<h1>CREATE YOUR OWN PRODUCTS:</h1>
+<div class="form-father-div">
+    <form *ngIf="reactiveProdForm" [formGroup]="reactiveProdForm" (submit)="newProduct()" class="form-div">
+        <div>
+            <label for="name">Name: </label>
+            <input id="name" type="text" formControlName="name" placeholder="Shorts">
+            <p *ngIf="!reactiveProdForm.get('name')?.valid && (reactiveProdForm.get('name')?.dirty || reactiveProdForm.get('name')?.touched)"
+                class="error-msg">this field is required</p>
+        </div>
+        <div>
+            <label for="material">Material: </label>
+            <input id="material" type="text" formControlName="material" placeholder="Cotton">
+            <p *ngIf="!reactiveProdForm.get('material')?.valid && (reactiveProdForm.get('material')?.dirty || reactiveProdForm.get('material')?.touched)"
+                class="error-msg">this field is required</p>
+        </div>
+        <div>
+            <label for="reference">Reference: </label>
+            <input id="nareferenceme" type="text" formControlName="reference" placeholder="73635">
+            <div *ngIf="!reactiveProdForm.get('reference')?.valid && (reactiveProdForm.get('reference')?.dirty || reactiveProdForm.get('reference')?.touched)"
+                class="error-msg">
+                <p *ngIf="reactiveProdForm.get('reference')?.errors?.['maxlength']">you have exceeded the maximum length
+                </p>
+                <p *ngIf="reactiveProdForm.get('reference')?.errors?.['required']">this field is required</p>
+            </div>
+        </div>
+        <div>
+            <label for="image">Image URL: </label>
+            <input id="image" type="text" formControlName="image" placeholder="http:/">
+            <p *ngIf="!reactiveProdForm.get('image')?.valid && (reactiveProdForm.get('image')?.dirty || reactiveProdForm.get('image')?.touched)"
+                class="error-msg">this field is required</p>
+        </div>
+        <div>
+            <label for="price">Price €: </label>
+            <input id="price" type="text" formControlName="price" placeholder="24">
+            <p *ngIf="!reactiveProdForm.get('price')?.valid && (reactiveProdForm.get('price')?.dirty || reactiveProdForm.get('price')?.touched)"
+                class="error-msg">this field is required</p>
+        </div>
+        <button class="product-btn" type="submit">CREATE PRODUCT</button>
+        <button class="update-btn" (click)="updateProduct()">update</button>
+    </form>
+</div>
+<h2>NEW CREATED PRODUCTS:</h2>
+<div *ngIf="newProducts.length > 0" class="prod-div">
+    <div *ngFor="let product of newProducts; let index = index" class="new-prod-div">
+        <h2>{{ product.name }}</h2>
+        <img [src]="product.image" alt="Product Image">
+        <p class="details">Price: {{ product.price }} €</p>
+        <p class="details">Material: {{ product.material }}</p>
+        <p class="details">Reference: {{ product.reference }}</p>
+        <div>
+            <button class="edit-btn" (click)="editProduct(index)">edit</button>
+            <button class="delete-btn" (click)="deleteProduct(index)">delete</button>
+        </div>
+    </div>
+</div>
