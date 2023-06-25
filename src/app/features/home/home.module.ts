@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { AboutComponent } from './components/about/about.component';
-import { RequirementsComponent } from './components/requirements/requirements.component';
 
 
 
@@ -11,7 +10,7 @@ import { RequirementsComponent } from './components/requirements/requirements.co
   declarations: [
     HomeComponent,
     AboutComponent,
-    RequirementsComponent
+    
   ],
   imports: [
     CommonModule,
@@ -20,7 +19,6 @@ import { RequirementsComponent } from './components/requirements/requirements.co
   exports: [
     HomeComponent,
     AboutComponent,
-    RequirementsComponent
   ]
 })
 export class HomeModule { }

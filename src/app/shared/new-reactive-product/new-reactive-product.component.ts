@@ -12,7 +12,7 @@ export class NewReactiveProductComponent implements OnInit {
   public reactiveProdForm?: FormGroup;
   public newProducts: ProductI[] = [];
   public selectedProductIndex: number = -1;
-  public index: number =0;
+  public index: number = 0;
 
   public constructor(private formBuilder: FormBuilder) { }
 
